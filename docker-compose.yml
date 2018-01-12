@@ -31,6 +31,14 @@ services:
       - 'MYSQL_DATABASE=app'
     ports:
       - '33061:3306'
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - database
+    environment:
+      - 'PMA_HOST=database'
+    ports:
+      - '8081:80'
   cache:
     image: redis:4.0.6
     ports:
