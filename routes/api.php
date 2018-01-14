@@ -30,4 +30,12 @@ Route::group(['middleware' => 'auth:api'], function() {
 	*/
 
 	Route::get('/categories', 'CategoryController@categories');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Sound Routes
+	|--------------------------------------------------------------------------
+	*/
+
+	Route::get('/sounds/{categoryId}', 'SoundController@sounds');
 });
