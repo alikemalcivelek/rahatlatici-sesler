@@ -38,4 +38,14 @@ Route::group(['middleware' => 'auth:api'], function() {
 	*/
 
 	Route::get('/sounds/{categoryId}', 'SoundController@sounds');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Favorite Routes
+	|--------------------------------------------------------------------------
+	*/
+
+	Route::get('/favorites', 'FavoriteController@favorites');
+	Route::post('/favorites/{soundId}', 'FavoriteController@add');
+	Route::delete('/favorites/{soundId}', 'FavoriteController@remove');
 });

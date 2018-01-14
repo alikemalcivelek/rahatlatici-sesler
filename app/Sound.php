@@ -10,6 +10,10 @@ class Sound extends Model {
 
 	protected $table = 'sounds';
 
+	public function favorite() {
+		return $this->hasMany('App\Favorite', 'soundId', 'id');
+	}
+
 	public function getSoundFileAttribute($value) {
 		// Convert sound file path to url.
 		return asset($value);
