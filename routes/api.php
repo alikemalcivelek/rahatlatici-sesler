@@ -17,6 +17,7 @@
 |--------------------------------------------------------------------------
 */
 
+Route::get('/auth/status', 'AuthController@status');
 Route::post('/auth/signUp', 'AuthController@signUp');
 Route::post('/auth/signIn', 'AuthController@signIn');
 

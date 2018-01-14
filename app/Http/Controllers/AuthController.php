@@ -15,6 +15,12 @@ use Lang;
 use Hash;
 
 class AuthController extends Controller {
+	public function status() {
+		return Responder::success([
+			'signedIn' => Auth::check()
+		]);
+	}
+
 	public function signUp() {
 		$input = Request::only([
 			'fullName',
