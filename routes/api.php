@@ -22,4 +22,12 @@ Route::post('/auth/signIn', 'AuthController@signIn');
 
 Route::group(['middleware' => 'auth:api'], function() {
 	Route::get('/auth/signOut', 'AuthController@signOut');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Category Routes
+	|--------------------------------------------------------------------------
+	*/
+
+	Route::get('/categories', 'CategoryController@categories');
 });
