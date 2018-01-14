@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +11,42 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/auth/status', 'AuthController@status');
+Route::post('/auth/signUp', 'AuthController@signUp');
+Route::post('/auth/signIn', 'AuthController@signIn');
+
+Route::group(['middleware' => 'auth:api'], function() {
+	Route::get('/auth/signOut', 'AuthController@signOut');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Category Routes
+	|--------------------------------------------------------------------------
+	*/
+
+	Route::get('/categories', 'CategoryController@categories');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Sound Routes
+	|--------------------------------------------------------------------------
+	*/
+
+	Route::get('/sounds/{categoryId}', 'SoundController@sounds');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Favorite Routes
+	|--------------------------------------------------------------------------
+	*/
+
+	Route::get('/favorites', 'FavoriteController@favorites');
+	Route::post('/favorites/{soundId}', 'FavoriteController@add');
+	Route::delete('/favorites/{soundId}', 'FavoriteController@remove');
 });
